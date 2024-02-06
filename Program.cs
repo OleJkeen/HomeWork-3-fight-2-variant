@@ -79,7 +79,7 @@ namespace HomeWork_3_fight_2_variant
                                     Console.WriteLine("Босс не может вас атаковать пока вы в разломе!");
                                     Console.WriteLine($"Ваше здоровье {playerHealth}");
                                     Console.WriteLine($"Здоровье босса {bossHealth}");
-                                    spellVoidUsed = true;
+                                    isSpellVoidUsed = true;
                                 }
                                 else if (isSpellVoidUsed == true)
                                 {
