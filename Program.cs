@@ -21,7 +21,7 @@ namespace HomeWork_3_fight_2_variant
             int bossDamage = 100;
             const int useSpellCommandRashamon = 1;
             int useSpellCommandHuganzakura = 2;
-            int useSpellCommandVoid = 3;
+            const int useSpellCommandVoid = 3;
             int useSpellCommandFireball = 4;
             bool isShadowSpiritSummoned = false;
             bool isSpellVoidUsed = false;
@@ -64,22 +64,19 @@ namespace HomeWork_3_fight_2_variant
                             Console.WriteLine("Сначала вы должны призвать теневого духа");
                         }
                         break;
-                    case 3:
-                        if (playerSpells == useSpellCommandVoid)
+                    case useSpellCommandVoid:
+                        if (isSpellVoidUsed != true)
                         {
-                            if (isSpellVoidUsed != true)
-                            {
-                                playerHealth += spellVoid;
-                                Console.WriteLine($"Вы восстановили себе {spellVoid} здоровья!");
-                                Console.WriteLine("Босс не может вас атаковать пока вы в разломе!");
-                                Console.WriteLine($"Ваше здоровье {playerHealth}");
-                                Console.WriteLine($"Здоровье босса {bossHealth}");
-                                isSpellVoidUsed = true;
-                            }
-                            else if (isSpellVoidUsed == true)
-                            {
-                                Console.WriteLine("Вы уже использовали это заклинание! Попробуйте другое");
-                            }
+                            playerHealth += spellVoid;
+                            Console.WriteLine($"Вы восстановили себе {spellVoid} здоровья!");
+                            Console.WriteLine("Босс не может вас атаковать пока вы в разломе!");
+                            Console.WriteLine($"Ваше здоровье {playerHealth}");
+                            Console.WriteLine($"Здоровье босса {bossHealth}");
+                            isSpellVoidUsed = true;
+                        }
+                        else if (isSpellVoidUsed == true)
+                        {
+                            Console.WriteLine("Вы уже использовали это заклинание! Попробуйте другое");
                         }
                         break;
                     case 4:
