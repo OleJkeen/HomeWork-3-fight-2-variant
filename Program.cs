@@ -20,9 +20,9 @@ namespace HomeWork_3_fight_2_variant
             int bossHealth = 1000;
             int bossDamage = 100;
             const int useSpellCommandRashamon = 1;
-            int useSpellCommandHuganzakura = 2;
+            const int useSpellCommandHuganzakura = 2;
             const int useSpellCommandVoid = 3;
-            int useSpellCommandFireball = 4;
+            const int useSpellCommandFireball = 4;
             bool isShadowSpiritSummoned = false;
             bool isSpellVoidUsed = false;
             Console.WriteLine("Вы попали на арену. Приготовьтесь к битве!");
@@ -49,7 +49,7 @@ namespace HomeWork_3_fight_2_variant
                         Console.WriteLine($"{playerHealth} - Ваше здоровье после атаки");
                         Console.WriteLine($"{bossHealth} - Здоровья босса после атаки");
                         break;
-                    case 2:
+                    case useSpellCommandHuganzakura:
                         if (isShadowSpiritSummoned)
                         {
                             bossHealth -= spellHuganzakura;
@@ -79,7 +79,7 @@ namespace HomeWork_3_fight_2_variant
                             Console.WriteLine("Вы уже использовали это заклинание! Попробуйте другое");
                         }
                         break;
-                    case 4:
+                    case useSpellCommandFireball:
                         if (playerSpells == useSpellCommandFireball)
                         {
                             bossHealth -= spellFireBall;
