@@ -19,18 +19,18 @@ namespace HomeWork_3_fight_2_variant
             int playerSpells = 0;
             int bossHealth = 1000;
             int bossDamage = 100;
-            int numberSpellRashamon = 1;
-            int numberSpellHuganzakura = 2;
-            int numberSpellVoid = 3;
-            int numberSpellFireball = 4;
+            int useSpellCommandRashamon = 1;
+            int useSpellCommandHuganzakura = 2;
+            int useSpellCommandVoid = 3;
+            int useSpellCommandFireball = 4;
             bool isShadowSpiritSummoned = false;
             bool isSpellVoidUsed = false;
             Console.WriteLine("Вы попали на арену. Приготовьтесь к битве!");
             Console.WriteLine("Изучите ваши заклинания: ");
-            Console.WriteLine($"{numberSpellRashamon} - заклинание Рашамон призывыает теневого духа и наносит {spellRashamonDamage} урона, но отнимает {spellRashamonHealth} здоровья");
-            Console.WriteLine($"{numberSpellHuganzakura} - заклинание Хуганзара наносит {spellHuganzakura} урона, но может применено только после теневого духа");
-            Console.WriteLine($"{numberSpellVoid} - заклинание позволяет скрыться в разломе и восстановить {spellVoid} хп. Можно использовать один раз за бой");
-            Console.WriteLine($"{numberSpellFireball} - заклинание Огненный шар наносит {spellFireBall} урона");
+            Console.WriteLine($"{useSpellCommandRashamon} - заклинание Рашамон призывыает теневого духа и наносит {spellRashamonDamage} урона, но отнимает {spellRashamonHealth} здоровья");
+            Console.WriteLine($"{useSpellCommandHuganzakura} - заклинание Хуганзара наносит {spellHuganzakura} урона, но может применено только после теневого духа");
+            Console.WriteLine($"{useSpellCommandVoid} - заклинание позволяет скрыться в разломе и восстановить {spellVoid} хп. Можно использовать один раз за бой");
+            Console.WriteLine($"{useSpellCommandFireball} - заклинание Огненный шар наносит {spellFireBall} урона");
             Console.WriteLine("Бой начинается!");
 
             while (playerHealth > 0 && bossHealth > 0)
@@ -40,6 +40,7 @@ namespace HomeWork_3_fight_2_variant
                 switch (playerSpells)
                 {
                     case 1:
+                        if (playerSpells == useSpellCommandRashamon)
                         {
                             bossHealth -= spellRashamonDamage;
                             Console.WriteLine($"Вы использовали способность Рашамон и  нанесли {spellRashamonDamage} урона");
@@ -52,53 +53,47 @@ namespace HomeWork_3_fight_2_variant
                         }
                         break;
                     case 2:
+                        if (isShadowSpiritSummoned)
                         {
-                            if (isShadowSpiritSummoned)
-                            {
-                                bossHealth -= spellHuganzakura;
-                                Console.WriteLine($"Вы использовали способность Хуганзакуру и нанесли {spellHuganzakura} урона");
-                                playerHealth -= bossDamage;
-                                Console.WriteLine($"Вы получили {bossDamage} урона от Босса");
-                                Console.WriteLine($"Ваше здоворье {playerHealth} после атаки");
-                                Console.WriteLine($"Здоровье Босса {bossHealth} после атаки");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Сначала вы должны призвать теневого духа");
-                            }
+                            bossHealth -= spellHuganzakura;
+                            Console.WriteLine($"Вы использовали способность Хуганзакуру и нанесли {spellHuganzakura} урона");
+                            playerHealth -= bossDamage;
+                            Console.WriteLine($"Вы получили {bossDamage} урона от Босса");
+                            Console.WriteLine($"Ваше здоворье {playerHealth} после атаки");
+                            Console.WriteLine($"Здоровье Босса {bossHealth} после атаки");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Сначала вы должны призвать теневого духа");
                         }
                         break;
                     case 3:
+                        if (playerSpells == useSpellCommandVoid)
                         {
-                            if (playerSpells == numberSpellVoid)
+                            if (isSpellVoidUsed != true)
                             {
-                                if (isSpellVoidUsed != true)
-                                {
-                                    playerHealth += spellVoid;
-                                    Console.WriteLine($"Вы восстановили себе {spellVoid} здоровья!");
-                                    Console.WriteLine("Босс не может вас атаковать пока вы в разломе!");
-                                    Console.WriteLine($"Ваше здоровье {playerHealth}");
-                                    Console.WriteLine($"Здоровье босса {bossHealth}");
-                                    isSpellVoidUsed = true;
-                                }
-                                else if (isSpellVoidUsed == true)
-                                {
-                                    Console.WriteLine("Вы уже использовали это заклинание! Попробуйте другое");
-                                }
+                                playerHealth += spellVoid;
+                                Console.WriteLine($"Вы восстановили себе {spellVoid} здоровья!");
+                                Console.WriteLine("Босс не может вас атаковать пока вы в разломе!");
+                                Console.WriteLine($"Ваше здоровье {playerHealth}");
+                                Console.WriteLine($"Здоровье босса {bossHealth}");
+                                isSpellVoidUsed = true;
+                            }
+                            else if (isSpellVoidUsed == true)
+                            {
+                                Console.WriteLine("Вы уже использовали это заклинание! Попробуйте другое");
                             }
                         }
                         break;
                     case 4:
+                        if (playerSpells == useSpellCommandFireball)
                         {
-                            if (playerSpells == numberSpellFireball)
-                            {
-                                bossHealth -= spellFireBall;
-                                Console.WriteLine($"Вы использовали заклинание Огненного шара и нанесли {spellFireBall} урона");
-                                playerHealth -= bossDamage;
-                                Console.WriteLine($"Босс нанес вам {bossDamage} урона");
-                                Console.WriteLine($"после атаки у вас {playerHealth} здоровья");
-                                Console.WriteLine($"после атаки у босса {bossHealth} здоровья");
-                            }
+                            bossHealth -= spellFireBall;
+                            Console.WriteLine($"Вы использовали заклинание Огненного шара и нанесли {spellFireBall} урона");
+                            playerHealth -= bossDamage;
+                            Console.WriteLine($"Босс нанес вам {bossDamage} урона");
+                            Console.WriteLine($"после атаки у вас {playerHealth} здоровья");
+                            Console.WriteLine($"после атаки у босса {bossHealth} здоровья");
                         }
                         break;
                 }
