@@ -19,7 +19,7 @@ namespace HomeWork_3_fight_2_variant
             int playerSpells = 0;
             int bossHealth = 1000;
             int bossDamage = 100;
-            int useSpellCommandRashamon = 1;
+            const int useSpellCommandRashamon = 1;
             int useSpellCommandHuganzakura = 2;
             int useSpellCommandVoid = 3;
             int useSpellCommandFireball = 4;
@@ -39,18 +39,15 @@ namespace HomeWork_3_fight_2_variant
 
                 switch (playerSpells)
                 {
-                    case 1:
-                        if (playerSpells == useSpellCommandRashamon)
-                        {
-                            bossHealth -= spellRashamonDamage;
-                            Console.WriteLine($"Вы использовали способность Рашамон и  нанесли {spellRashamonDamage} урона");
-                            playerHealth -= bossDamage;
-                            playerHealth -= spellRashamonHealth;
-                            isShadowSpiritSummoned = true;
-                            Console.WriteLine($"Вы получили урон от Босса {bossDamage} и заклинания теневого духа{spellRashamonHealth}");
-                            Console.WriteLine($"{playerHealth} - Ваше здоровье после атаки");
-                            Console.WriteLine($"{bossHealth} - Здоровья босса после атаки");
-                        }
+                    case useSpellCommandRashamon:
+                        bossHealth -= spellRashamonDamage;
+                        Console.WriteLine($"Вы использовали способность Рашамон и  нанесли {spellRashamonDamage} урона");
+                        playerHealth -= bossDamage;
+                        playerHealth -= spellRashamonHealth;
+                        isShadowSpiritSummoned = true;
+                        Console.WriteLine($"Вы получили урон от Босса {bossDamage} и заклинания теневого духа{spellRashamonHealth}");
+                        Console.WriteLine($"{playerHealth} - Ваше здоровье после атаки");
+                        Console.WriteLine($"{bossHealth} - Здоровья босса после атаки");
                         break;
                     case 2:
                         if (isShadowSpiritSummoned)
