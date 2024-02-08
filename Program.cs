@@ -10,17 +10,17 @@ namespace HomeWork_3_fight_2_variant
     {
         static void Main(string[] args)
         {
-            const int ActionCommandSpellRashamon = 1;
-            const int ActionCommandSpellHuganzakura = 2;
-            const int ActionCommandSpellVoid = 3;
-            const int ActionCommandSpellFireball = 4;
+            const string ActionCommandSpellRashamon = "1";
+            const string ActionCommandSpellHuganzakura = "2";
+            const string ActionCommandSpellVoid = "3";
+            const string ActionCommandSpellFireball = "4";
             int playerHealth = 500;
             int spellRashamonHealth = 100;
             int spellRashamonDamage = 300;
             int spellHuganzakura = 200;
             int spellVoid = 250;
             int spellFireBall = 100;
-            int playerSpells = 0;
+            string playerSpells = "0";
             int bossHealth = 1000;
             int bossDamage = 100;
             bool isShadowSpiritSummoned = false;
@@ -35,8 +35,7 @@ namespace HomeWork_3_fight_2_variant
 
             while (playerHealth > 0 && bossHealth > 0)
             {
-                playerSpells = int.Parse(Console.ReadLine());
-
+                playerSpells = Console.ReadLine();
                 switch (playerSpells)
                 {
                     case ActionCommandSpellRashamon:
