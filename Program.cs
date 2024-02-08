@@ -10,6 +10,10 @@ namespace HomeWork_3_fight_2_variant
     {
         static void Main(string[] args)
         {
+            const int ActionCommandSpellRashamon = 1;
+            const int ActionCommandSpellHuganzakura = 2;
+            const int ActionCommandSpellVoid = 3;
+            const int ActionCommandSpellFireball = 4;
             int playerHealth = 500;
             int spellRashamonHealth = 100;
             int spellRashamonDamage = 300;
@@ -19,18 +23,14 @@ namespace HomeWork_3_fight_2_variant
             int playerSpells = 0;
             int bossHealth = 1000;
             int bossDamage = 100;
-            const int useSpellCommandRashamon = 1;
-            const int useSpellCommandHuganzakura = 2;
-            const int useSpellCommandVoid = 3;
-            const int useSpellCommandFireball = 4;
             bool isShadowSpiritSummoned = false;
             bool isSpellVoidUsed = false;
             Console.WriteLine("Вы попали на арену. Приготовьтесь к битве!");
             Console.WriteLine("Изучите ваши заклинания: ");
-            Console.WriteLine($"{useSpellCommandRashamon} - заклинание Рашамон призывыает теневого духа и наносит {spellRashamonDamage} урона, но отнимает {spellRashamonHealth} здоровья");
-            Console.WriteLine($"{useSpellCommandHuganzakura} - заклинание Хуганзара наносит {spellHuganzakura} урона, но может применено только после теневого духа");
-            Console.WriteLine($"{useSpellCommandVoid} - заклинание позволяет скрыться в разломе и восстановить {spellVoid} хп. Можно использовать один раз за бой");
-            Console.WriteLine($"{useSpellCommandFireball} - заклинание Огненный шар наносит {spellFireBall} урона");
+            Console.WriteLine($"{ActionCommandSpellRashamon} - заклинание Рашамон призывыает теневого духа и наносит {spellRashamonDamage} урона, но отнимает {spellRashamonHealth} здоровья");
+            Console.WriteLine($"{ActionCommandSpellHuganzakura} - заклинание Хуганзара наносит {spellHuganzakura} урона, но может применено только после теневого духа");
+            Console.WriteLine($"{ActionCommandSpellVoid} - заклинание позволяет скрыться в разломе и восстановить {spellVoid} хп. Можно использовать один раз за бой");
+            Console.WriteLine($"{ActionCommandSpellFireball} - заклинание Огненный шар наносит {spellFireBall} урона");
             Console.WriteLine("Бой начинается!");
 
             while (playerHealth > 0 && bossHealth > 0)
@@ -39,7 +39,7 @@ namespace HomeWork_3_fight_2_variant
 
                 switch (playerSpells)
                 {
-                    case useSpellCommandRashamon:
+                    case ActionCommandSpellRashamon:
                         bossHealth -= spellRashamonDamage;
                         Console.WriteLine($"Вы использовали способность Рашамон и  нанесли {spellRashamonDamage} урона");
                         playerHealth -= bossDamage;
@@ -49,7 +49,7 @@ namespace HomeWork_3_fight_2_variant
                         Console.WriteLine($"{playerHealth} - Ваше здоровье после атаки");
                         Console.WriteLine($"{bossHealth} - Здоровья босса после атаки");
                         break;
-                    case useSpellCommandHuganzakura:
+                    case ActionCommandSpellHuganzakura:
                         if (isShadowSpiritSummoned)
                         {
                             bossHealth -= spellHuganzakura;
@@ -64,7 +64,7 @@ namespace HomeWork_3_fight_2_variant
                             Console.WriteLine("Сначала вы должны призвать теневого духа");
                         }
                         break;
-                    case useSpellCommandVoid:
+                    case ActionCommandSpellVoid:
                         if (isSpellVoidUsed != true)
                         {
                             playerHealth += spellVoid;
@@ -74,21 +74,18 @@ namespace HomeWork_3_fight_2_variant
                             Console.WriteLine($"Здоровье босса {bossHealth}");
                             isSpellVoidUsed = true;
                         }
-                        else if (isSpellVoidUsed == true)
+                        else
                         {
                             Console.WriteLine("Вы уже использовали это заклинание! Попробуйте другое");
                         }
                         break;
-                    case useSpellCommandFireball:
-                        if (playerSpells == useSpellCommandFireball)
-                        {
-                            bossHealth -= spellFireBall;
-                            Console.WriteLine($"Вы использовали заклинание Огненного шара и нанесли {spellFireBall} урона");
-                            playerHealth -= bossDamage;
-                            Console.WriteLine($"Босс нанес вам {bossDamage} урона");
-                            Console.WriteLine($"после атаки у вас {playerHealth} здоровья");
-                            Console.WriteLine($"после атаки у босса {bossHealth} здоровья");
-                        }
+                    case ActionCommandSpellFireball:
+                         bossHealth -= spellFireBall;
+                         Console.WriteLine($"Вы использовали заклинание Огненного шара и нанесли {spellFireBall} урона");
+                         playerHealth -= bossDamage;
+                         Console.WriteLine($"Босс нанес вам {bossDamage} урона");
+                         Console.WriteLine($"после атаки у вас {playerHealth} здоровья");
+                         Console.WriteLine($"после атаки у босса {bossHealth} здоровья");
                         break;
                 }
             }
