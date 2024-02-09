@@ -14,6 +14,7 @@ namespace HomeWork_3_fight_2_variant
             const string ActionCommandSpellHuganzakura = "2";
             const string ActionCommandSpellVoid = "3";
             const string ActionCommandSpellFireball = "4";
+            
             int playerHealth = 500;
             int spellRashamonHealth = 100;
             int spellRashamonDamage = 300;
@@ -25,6 +26,7 @@ namespace HomeWork_3_fight_2_variant
             int bossDamage = 100;
             bool isShadowSpiritSummoned = false;
             bool isSpellVoidUsed = false;
+            
             Console.WriteLine("Вы попали на арену. Приготовьтесь к битве!");
             Console.WriteLine("Изучите ваши заклинания: ");
             Console.WriteLine($"{ActionCommandSpellRashamon} - заклинание Рашамон призывыает теневого духа и наносит {spellRashamonDamage} урона, но отнимает {spellRashamonHealth} здоровья");
@@ -36,6 +38,7 @@ namespace HomeWork_3_fight_2_variant
             while (playerHealth > 0 && bossHealth > 0)
             {
                 playerSpells = Console.ReadLine();
+                
                 switch (playerSpells)
                 {
                     case ActionCommandSpellRashamon:
